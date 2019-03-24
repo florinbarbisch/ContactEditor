@@ -1,6 +1,8 @@
 package ui;
 
+import java.awt.Component;
 import java.awt.EventQueue;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.HeadlessException;
@@ -16,18 +18,36 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 
-public class ApplicationFrame extends JFrame {
+/**
+ * Java Swing Demo with flexible {@link GridBagLayout}.
+ *
+ * @author Florin Barbisch
+ *
+ */
+public class ContactEditor extends JFrame {
   private static final long serialVersionUID = 1L;
 
+  /**
+   * Creates a new {@link ContactEditor}.
+   *
+   * @param args The command-line arguments
+   */
   public static void main(String[] args) {
-    EventQueue.invokeLater(() -> new ApplicationFrame().setVisible(true));
+    EventQueue.invokeLater(() -> new ContactEditor().setVisible(true));
   }
 
-  public ApplicationFrame() throws HeadlessException {
+  /**
+   * Creates the ContactEditor.
+   *
+   * @throws HeadlessException if {@link GraphicsEnvironment#isHeadless()} returns
+   *                           true.
+   */
+  public ContactEditor() throws HeadlessException {
     super("Contact Editor");
     setLayout(new GridBagLayout());
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     add(createNamePanel(),   new GridBagConstraints(0, 0, 1, 1, 1, 0, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
     add(createEmailPanel(),  new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH,       new Insets(5, 5, 5, 5), 0, 0));
@@ -37,7 +57,13 @@ public class ApplicationFrame extends JFrame {
   }
 
 
-  protected JPanel createNamePanel() {
+  /**
+   * Returns a {@link JPanel} with {@link Component Components} relevant to a
+   * person.
+   *
+   * @return The created {@link JPanel}
+   */
+  protected static JPanel createNamePanel() {
     JPanel panel = new JPanel(new GridBagLayout());
     panel.setBorder(BorderFactory.createTitledBorder("Name"));
 
@@ -58,7 +84,13 @@ public class ApplicationFrame extends JFrame {
     return panel;
   }
 
-  protected JPanel createEmailPanel() {
+  /**
+   * Returns a {@link JPanel} with {@link Component Components} relevant to an
+   * email template.
+   *
+   * @return The created {@link JPanel}
+   */
+  protected static JPanel createEmailPanel() {
     JPanel panel = new JPanel(new GridBagLayout());
     panel.setBorder(BorderFactory.createTitledBorder("Email"));
 
@@ -75,10 +107,16 @@ public class ApplicationFrame extends JFrame {
     panel.add(new JLabel("Mail Format:"),   new GridBagConstraints(0, 4, 3, 1, 1, 0, GridBagConstraints.WEST,      GridBagConstraints.NONE,       new Insets(5, 5, 5, 5), 0, 0));
     panel.add(createMailFormat(),           new GridBagConstraints(0, 5, 3, 1, 1, 0, GridBagConstraints.WEST,      GridBagConstraints.NONE,       new Insets(5, 5, 5, 5), 0, 0));
 
-	return panel;
+    return panel;
   }
 
-  protected JPanel createMailFormat() {
+  /**
+   * Returns a {@link JPanel} with {@link Component Components} relevant to the
+   * email format of the email template.
+   *
+   * @return The created {@link JPanel}
+   */
+  protected static JPanel createMailFormat() {
     JPanel panel = new JPanel(new GridBagLayout());
 
     ButtonGroup bg = new ButtonGroup();
@@ -94,11 +132,16 @@ public class ApplicationFrame extends JFrame {
     return panel;
   }
 
-  protected JPanel createOkCancel() {
+  /**
+   * Returns a {@link JPanel} with {@link JButton JButtons} to confirm or cancel.
+   *
+   * @return The created {@link JPanel}
+   */
+  protected static JPanel createOkCancel() {
     JPanel panel = new JPanel(new GridBagLayout());
 
-    panel.add(new JButton("Ok"),     new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(10, 10, 0, 10), 0, 0));
-    panel.add(new JButton("Cancel"), new GridBagConstraints(1, 0, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.NONE, new Insets(10, 10, 0, 10), 0, 0));
+    panel.add(new JButton("Ok"),     new GridBagConstraints(0, 0, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets(10, 10, 0, 10), 0, 0));
+    panel.add(new JButton("Cancel"), new GridBagConstraints(1, 0, 1, 1, 0, 0, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets(10, 10, 0, 10), 0, 0));
 
     return panel;
   }
