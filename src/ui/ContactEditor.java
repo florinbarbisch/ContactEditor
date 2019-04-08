@@ -42,18 +42,18 @@ public class ContactEditor extends JFrame {
    * Creates the ContactEditor.
    *
    * @throws HeadlessException if {@link GraphicsEnvironment#isHeadless()} returns
-   *                           true.
+   *                           ${@code true}.
    */
   public ContactEditor() throws HeadlessException {
     super("Contact Editor");
-    setLayout(new GridBagLayout());
-    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    this.setLayout(new GridBagLayout());
+    this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-    add(createNamePanel(),   new GridBagConstraints(0, 0, 1, 1, 1, 0, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
-    add(createEmailPanel(),  new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH,       new Insets(5, 5, 5, 5), 0, 0));
-    add(createOkCancel(),    new GridBagConstraints(0, 2, 1, 1, 1, 0, GridBagConstraints.EAST, GridBagConstraints.NONE,       new Insets(5, 5, 5, 5), 0, 0));
+    this.add(createNamePanel(),   new GridBagConstraints(0, 0, 1, 1, 1, 0, GridBagConstraints.WEST, GridBagConstraints.HORIZONTAL, new Insets(5, 5, 5, 5), 0, 0));
+    this.add(createEmailPanel(),  new GridBagConstraints(0, 1, 1, 1, 1, 1, GridBagConstraints.WEST, GridBagConstraints.BOTH,       new Insets(5, 5, 5, 5), 0, 0));
+    this.add(createOkCancel(),    new GridBagConstraints(0, 2, 1, 1, 1, 0, GridBagConstraints.EAST, GridBagConstraints.NONE,       new Insets(5, 5, 5, 5), 0, 0));
 
-    pack();
+    this.pack();
   }
 
 
